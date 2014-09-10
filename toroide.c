@@ -42,14 +42,11 @@ int main(void) {
 			reedAux = reed;
 			freq = (float) (59 * reed / 1024) + 1;
 			latencia = (int) 1 / freq * 500;
-			printf("Lat: %ums Freq: %fHz\n\r", latencia, freq);
 		}
 
 		set_adc_channel(3);
 		delay_ms(latencia);
-		reed = read_adc();
-		reedAux = reed;
-		printf("Tensao: %f\n\r", (float) 5 * reed / 1024);
+		printf("%lu\n\r", read_adc());
 	}
 	return 0;
 }

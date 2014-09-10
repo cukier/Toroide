@@ -1,15 +1,15 @@
-CCS PCH C Compiler, Version 4.140, 22098               10-set-14 09:38
+CCS PCH C Compiler, Version 4.140, 22098               10-set-14 09:47
 
                Filename:   D:\Projetos\Toroide\toroide.lst
 
-               ROM used:   2850 bytes (9%)
-                           Largest free fragment is 29918
+               ROM used:   2020 bytes (6%)
+                           Largest free fragment is 30748
                RAM used:   21 (1%) at main() level
-                           47 (3%) worst case
+                           37 (2%) worst case
                Stack:     2 locations
 
 *
-0000:  GOTO   08D0
+0000:  GOTO   0670
 .................... /* 
 ....................  * toroide.c 
 ....................  * 
@@ -28,61 +28,61 @@ CCS PCH C Compiler, Version 4.140, 22098               10-set-14 09:38
 ....................  
 .................... #USE delay(clock=16MHz) 
 *
-002A:  CLRF   FEA
-002C:  MOVLW  11
-002E:  MOVWF  FE9
-0030:  MOVF   FEF,W
-0032:  BZ    0050
-0034:  MOVLW  05
-0036:  MOVWF  01
-0038:  CLRF   00
-003A:  DECFSZ 00,F
-003C:  BRA    003A
-003E:  DECFSZ 01,F
-0040:  BRA    0038
-0042:  MOVLW  2E
-0044:  MOVWF  00
-0046:  DECFSZ 00,F
-0048:  BRA    0046
-004A:  BRA    004C
-004C:  DECFSZ FEF,F
-004E:  BRA    0034
-0050:  RETURN 0
+0004:  CLRF   FEA
+0006:  MOVLW  11
+0008:  MOVWF  FE9
+000A:  MOVF   FEF,W
+000C:  BZ    002A
+000E:  MOVLW  05
+0010:  MOVWF  01
+0012:  CLRF   00
+0014:  DECFSZ 00,F
+0016:  BRA    0014
+0018:  DECFSZ 01,F
+001A:  BRA    0012
+001C:  MOVLW  2E
+001E:  MOVWF  00
+0020:  DECFSZ 00,F
+0022:  BRA    0020
+0024:  BRA    0026
+0026:  DECFSZ FEF,F
+0028:  BRA    000E
+002A:  RETURN 0
 .................... #USE rs232(xmit=PIN_C6, BAUD=9600) 
 *
-059A:  BCF    F94.6
-059C:  BCF    F8B.6
-059E:  MOVLW  08
-05A0:  MOVWF  01
-05A2:  BRA    05A4
-05A4:  NOP   
-05A6:  BSF    01.7
-05A8:  BRA    05C6
-05AA:  BCF    01.7
-05AC:  RRCF   22,F
-05AE:  BTFSC  FD8.0
-05B0:  BSF    F8B.6
-05B2:  BTFSS  FD8.0
-05B4:  BCF    F8B.6
-05B6:  BSF    01.6
-05B8:  BRA    05C6
-05BA:  BCF    01.6
-05BC:  DECFSZ 01,F
-05BE:  BRA    05AC
-05C0:  BRA    05C2
-05C2:  NOP   
-05C4:  BSF    F8B.6
-05C6:  MOVLW  84
-05C8:  MOVWF  FE9
-05CA:  DECFSZ FE9,F
-05CC:  BRA    05CA
-05CE:  BRA    05D0
-05D0:  NOP   
-05D2:  BTFSC  01.7
-05D4:  BRA    05AA
-05D6:  BTFSC  01.6
-05D8:  BRA    05BA
-05DA:  RETURN 0
+057A:  BCF    F94.6
+057C:  BCF    F8B.6
+057E:  MOVLW  08
+0580:  MOVWF  01
+0582:  BRA    0584
+0584:  NOP   
+0586:  BSF    01.7
+0588:  BRA    05A6
+058A:  BCF    01.7
+058C:  RRCF   1C,F
+058E:  BTFSC  FD8.0
+0590:  BSF    F8B.6
+0592:  BTFSS  FD8.0
+0594:  BCF    F8B.6
+0596:  BSF    01.6
+0598:  BRA    05A6
+059A:  BCF    01.6
+059C:  DECFSZ 01,F
+059E:  BRA    058C
+05A0:  BRA    05A2
+05A2:  NOP   
+05A4:  BSF    F8B.6
+05A6:  MOVLW  84
+05A8:  MOVWF  FE9
+05AA:  DECFSZ FE9,F
+05AC:  BRA    05AA
+05AE:  BRA    05B0
+05B0:  NOP   
+05B2:  BTFSC  01.7
+05B4:  BRA    058A
+05B6:  BTFSC  01.6
+05B8:  BRA    059A
+05BA:  RETURN 0
 ....................  
 .................... #define padrao 100 
 ....................  
@@ -97,254 +97,172 @@ CCS PCH C Compiler, Version 4.140, 22098               10-set-14 09:38
 ....................  
 .................... int main(void) { 
 *
-08D0:  CLRF   FF8
-08D2:  BCF    FD0.7
-08D4:  CLRF   FEA
-08D6:  CLRF   FE9
-08D8:  BCF    F94.6
-08DA:  BSF    F8B.6
-08DC:  MOVLW  64
-08DE:  MOVWF  0C
-08E0:  BSF    FC1.0
-08E2:  BSF    FC1.1
-08E4:  BSF    FC1.2
-08E6:  BCF    FC1.3
+0670:  CLRF   FF8
+0672:  BCF    FD0.7
+0674:  CLRF   FEA
+0676:  CLRF   FE9
+0678:  BCF    F94.6
+067A:  BSF    F8B.6
+067C:  MOVLW  64
+067E:  MOVWF  0C
+0680:  BSF    FC1.0
+0682:  BSF    FC1.1
+0684:  BSF    FC1.2
+0686:  BCF    FC1.3
 ....................  
 .................... 	SETUP_ADC(ADC_CLOCK_INTERNAL); 
-08E8:  BCF    FC1.6
-08EA:  BSF    FC2.6
-08EC:  BSF    FC2.7
-08EE:  BSF    FC1.7
-08F0:  BSF    FC2.0
+0688:  BCF    FC1.6
+068A:  BSF    FC2.6
+068C:  BSF    FC2.7
+068E:  BSF    FC1.7
+0690:  BSF    FC2.0
 .................... 	SETUP_ADC_PORTS(AN0_AN1_AN3); 
-08F2:  BCF    FC1.0
-08F4:  BCF    FC1.1
-08F6:  BSF    FC1.2
-08F8:  BCF    FC1.3
+0692:  BCF    FC1.0
+0694:  BCF    FC1.1
+0696:  BSF    FC1.2
+0698:  BCF    FC1.3
 ....................  
 .................... 	if (!latencia) 
-08FA:  MOVF   0C,F
-08FC:  BNZ   0902
+069A:  MOVF   0C,F
+069C:  BNZ   06A2
 .................... 		latencia = padrao; 
-08FE:  MOVLW  64
-0900:  MOVWF  0C
+069E:  MOVLW  64
+06A0:  MOVWF  0C
 ....................  
 .................... 	while (TRUE) { 
 ....................  
 .................... 		set_adc_channel(0); 
-0902:  MOVLW  00
-0904:  MOVWF  01
-0906:  MOVF   FC2,W
-0908:  ANDLW  C7
-090A:  IORWF  01,W
-090C:  MOVWF  FC2
+06A2:  MOVLW  00
+06A4:  MOVWF  01
+06A6:  MOVF   FC2,W
+06A8:  ANDLW  C7
+06AA:  IORWF  01,W
+06AC:  MOVWF  FC2
 .................... 		delay_ms(latencia); 
-090E:  MOVFF  0C,11
-0912:  CALL   002A
+06AE:  MOVFF  0C,11
+06B2:  RCALL  0004
 .................... 		reed = read_adc(); 
-0916:  BSF    FC2.2
-0918:  BTFSC  FC2.2
-091A:  BRA    0918
-091C:  MOVFF  FC3,04
-0920:  MOVFF  FC4,05
+06B4:  BSF    FC2.2
+06B6:  BTFSC  FC2.2
+06B8:  BRA    06B6
+06BA:  MOVFF  FC3,04
+06BE:  MOVFF  FC4,05
 ....................  
 .................... 		if (reedAux != reed) { 
-0924:  MOVF   04,W
-0926:  SUBWF  06,W
-0928:  BNZ   0932
-092A:  MOVF   05,W
-092C:  SUBWF  07,W
-092E:  BTFSC  FD8.2
-0930:  BRA    0A56
+06C2:  MOVF   04,W
+06C4:  SUBWF  06,W
+06C6:  BNZ   06CE
+06C8:  MOVF   05,W
+06CA:  SUBWF  07,W
+06CC:  BZ    079E
 .................... 			reedAux = reed; 
-0932:  MOVFF  05,07
-0936:  MOVFF  04,06
+06CE:  MOVFF  05,07
+06D2:  MOVFF  04,06
 .................... 			freq = (float) (59 * reed / 1024) + 1; 
-093A:  CLRF   12
-093C:  MOVLW  3B
-093E:  MOVWF  11
-0940:  MOVFF  05,14
-0944:  MOVFF  04,13
-0948:  GOTO   0052
-094C:  MOVFF  02,12
-0950:  CLRF   03
-0952:  RRCF   02,W
-0954:  MOVWF  02
-0956:  RRCF   02,F
-0958:  MOVLW  3F
-095A:  ANDWF  02,F
-095C:  MOVFF  02,11
-0960:  MOVFF  03,12
-0964:  CALL   0072
-0968:  MOVFF  00,11
-096C:  MOVFF  01,12
-0970:  MOVFF  02,13
-0974:  MOVFF  03,14
-0978:  BCF    FD8.1
-097A:  MOVFF  03,18
-097E:  MOVFF  02,17
-0982:  MOVFF  01,16
-0986:  MOVFF  00,15
-098A:  CLRF   1C
-098C:  CLRF   1B
-098E:  CLRF   1A
-0990:  MOVLW  7F
-0992:  MOVWF  19
-0994:  GOTO   00A8
-0998:  MOVFF  03,0B
-099C:  MOVFF  02,0A
-09A0:  MOVFF  01,09
-09A4:  MOVFF  00,08
+06D6:  CLRF   12
+06D8:  MOVLW  3B
+06DA:  MOVWF  11
+06DC:  MOVFF  05,14
+06E0:  MOVFF  04,13
+06E4:  BRA    002C
+06E6:  MOVFF  02,12
+06EA:  CLRF   03
+06EC:  RRCF   02,W
+06EE:  MOVWF  02
+06F0:  RRCF   02,F
+06F2:  MOVLW  3F
+06F4:  ANDWF  02,F
+06F6:  MOVFF  02,11
+06FA:  MOVFF  03,12
+06FE:  BRA    004C
+0700:  MOVFF  00,11
+0704:  MOVFF  01,12
+0708:  MOVFF  02,13
+070C:  MOVFF  03,14
+0710:  BCF    FD8.1
+0712:  MOVFF  03,18
+0716:  MOVFF  02,17
+071A:  MOVFF  01,16
+071E:  MOVFF  00,15
+0722:  CLRF   1C
+0724:  CLRF   1B
+0726:  CLRF   1A
+0728:  MOVLW  7F
+072A:  MOVWF  19
+072C:  BRA    0084
+072E:  MOVFF  03,0B
+0732:  MOVFF  02,0A
+0736:  MOVFF  01,09
+073A:  MOVFF  00,08
 .................... 			latencia = (int) 1 / freq * 500; 
-09A8:  CLRF   18
-09AA:  CLRF   17
-09AC:  CLRF   16
-09AE:  MOVLW  7F
-09B0:  MOVWF  15
-09B2:  MOVFF  0B,1C
-09B6:  MOVFF  0A,1B
-09BA:  MOVFF  09,1A
-09BE:  MOVFF  08,19
-09C2:  RCALL  0314
-09C4:  MOVFF  00,11
-09C8:  MOVFF  01,12
-09CC:  MOVFF  02,13
-09D0:  MOVFF  03,14
-09D4:  MOVFF  03,25
-09D8:  MOVFF  02,24
-09DC:  MOVFF  01,23
-09E0:  MOVFF  00,22
-09E4:  CLRF   29
-09E6:  CLRF   28
-09E8:  MOVLW  7A
-09EA:  MOVWF  27
-09EC:  MOVLW  87
-09EE:  MOVWF  26
-09F0:  RCALL  046E
-09F2:  MOVFF  03,14
-09F6:  MOVFF  02,13
-09FA:  MOVFF  01,12
-09FE:  MOVFF  00,11
-0A02:  BRA    0560
-0A04:  MOVFF  01,0C
-.................... 			printf("Lat: %ums Freq: %fHz\n\r", latencia, freq); 
-0A08:  MOVLW  04
-0A0A:  MOVWF  FF6
-0A0C:  MOVLW  00
-0A0E:  MOVWF  FF7
-0A10:  MOVLW  05
-0A12:  MOVWF  15
-0A14:  RCALL  05DC
-0A16:  MOVFF  0C,11
-0A1A:  MOVLW  1B
-0A1C:  MOVWF  12
-0A1E:  BRA    0622
-0A20:  MOVLW  0B
-0A22:  MOVWF  FF6
-0A24:  MOVLW  00
-0A26:  MOVWF  FF7
-0A28:  MOVLW  09
-0A2A:  MOVWF  15
-0A2C:  RCALL  05DC
-0A2E:  MOVLW  89
-0A30:  MOVWF  FE9
-0A32:  MOVFF  0B,18
-0A36:  MOVFF  0A,17
-0A3A:  MOVFF  09,16
-0A3E:  MOVFF  08,15
-0A42:  MOVLW  02
-0A44:  MOVWF  19
-0A46:  RCALL  0758
-0A48:  MOVLW  16
-0A4A:  MOVWF  FF6
-0A4C:  MOVLW  00
-0A4E:  MOVWF  FF7
-0A50:  MOVLW  04
-0A52:  MOVWF  15
-0A54:  RCALL  05DC
+073E:  CLRF   14
+0740:  CLRF   13
+0742:  CLRF   12
+0744:  MOVLW  7F
+0746:  MOVWF  11
+0748:  MOVFF  0B,18
+074C:  MOVFF  0A,17
+0750:  MOVFF  09,16
+0754:  MOVFF  08,15
+0758:  BRA    02F0
+075A:  MOVFF  00,11
+075E:  MOVFF  01,12
+0762:  MOVFF  02,13
+0766:  MOVFF  03,14
+076A:  MOVFF  03,18
+076E:  MOVFF  02,17
+0772:  MOVFF  01,16
+0776:  MOVFF  00,15
+077A:  CLRF   1C
+077C:  CLRF   1B
+077E:  MOVLW  7A
+0780:  MOVWF  1A
+0782:  MOVLW  87
+0784:  MOVWF  19
+0786:  BRA    044C
+0788:  MOVFF  03,14
+078C:  MOVFF  02,13
+0790:  MOVFF  01,12
+0794:  MOVFF  00,11
+0798:  BRA    0540
+079A:  MOVFF  01,0C
 .................... 		} 
 ....................  
 .................... 		set_adc_channel(3); 
-0A56:  MOVLW  18
-0A58:  MOVWF  01
-0A5A:  MOVF   FC2,W
-0A5C:  ANDLW  C7
-0A5E:  IORWF  01,W
-0A60:  MOVWF  FC2
+079E:  MOVLW  18
+07A0:  MOVWF  01
+07A2:  MOVF   FC2,W
+07A4:  ANDLW  C7
+07A6:  IORWF  01,W
+07A8:  MOVWF  FC2
 .................... 		delay_ms(latencia); 
-0A62:  MOVFF  0C,11
-0A66:  CALL   002A
-.................... 		reed = read_adc(); 
-0A6A:  BSF    FC2.2
-0A6C:  BTFSC  FC2.2
-0A6E:  BRA    0A6C
-0A70:  MOVFF  FC3,04
-0A74:  MOVFF  FC4,05
-.................... 		reedAux = reed; 
-0A78:  MOVFF  05,07
-0A7C:  MOVFF  04,06
-.................... 		printf("Tensao: %f\n\r", (float) 5 * reed / 1024); 
-0A80:  MOVFF  05,12
-0A84:  MOVFF  04,11
-0A88:  CALL   0072
-0A8C:  CLRF   25
-0A8E:  CLRF   24
-0A90:  MOVLW  20
-0A92:  MOVWF  23
-0A94:  MOVLW  81
-0A96:  MOVWF  22
-0A98:  MOVFF  03,29
-0A9C:  MOVFF  02,28
-0AA0:  MOVFF  01,27
-0AA4:  MOVFF  00,26
-0AA8:  RCALL  046E
-0AAA:  MOVFF  00,11
-0AAE:  MOVFF  01,12
-0AB2:  MOVFF  02,13
-0AB6:  MOVFF  03,14
-0ABA:  MOVFF  03,18
-0ABE:  MOVFF  02,17
-0AC2:  MOVFF  01,16
-0AC6:  MOVFF  00,15
-0ACA:  CLRF   1C
-0ACC:  CLRF   1B
-0ACE:  CLRF   1A
-0AD0:  MOVLW  89
-0AD2:  MOVWF  19
-0AD4:  RCALL  0314
-0AD6:  MOVFF  00,11
-0ADA:  MOVFF  01,12
-0ADE:  MOVFF  02,13
-0AE2:  MOVFF  03,14
-0AE6:  MOVLW  1C
-0AE8:  MOVWF  FF6
-0AEA:  MOVLW  00
-0AEC:  MOVWF  FF7
-0AEE:  MOVLW  08
-0AF0:  MOVWF  15
-0AF2:  RCALL  05DC
-0AF4:  MOVLW  89
-0AF6:  MOVWF  FE9
-0AF8:  MOVFF  14,18
-0AFC:  MOVFF  13,17
-0B00:  MOVFF  12,16
-0B04:  MOVFF  11,15
-0B08:  MOVLW  02
-0B0A:  MOVWF  19
-0B0C:  RCALL  0758
-0B0E:  MOVLW  0A
-0B10:  MOVWF  22
-0B12:  RCALL  059A
-0B14:  MOVLW  0D
-0B16:  MOVWF  22
-0B18:  RCALL  059A
+07AA:  MOVFF  0C,11
+07AE:  RCALL  0004
+.................... 		printf("%lu\n\r", read_adc()); 
+07B0:  BSF    FC2.2
+07B2:  BTFSC  FC2.2
+07B4:  BRA    07B2
+07B6:  MOVFF  FC4,03
+07BA:  MOVFF  FC3,11
+07BE:  MOVFF  FC4,12
+07C2:  MOVLW  10
+07C4:  MOVWF  FE9
+07C6:  MOVFF  FC4,14
+07CA:  MOVFF  FC3,13
+07CE:  BRA    05BC
+07D0:  MOVLW  0A
+07D2:  MOVWF  1C
+07D4:  RCALL  057A
+07D6:  MOVLW  0D
+07D8:  MOVWF  1C
+07DA:  RCALL  057A
 .................... 	} 
-0B1A:  BRA    0902
+07DC:  BRA    06A2
 .................... 	return 0; 
-0B1C:  MOVLW  00
-0B1E:  MOVWF  01
+07DE:  MOVLW  00
+07E0:  MOVWF  01
 .................... } 
-0B20:  SLEEP 
+07E2:  SLEEP 
 
 Configuration Fuses:
    Word  1: 2200   HS NOOSCSEN
