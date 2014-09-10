@@ -13,10 +13,13 @@
 #USE delay(clock=16MHz)
 #USE rs232(xmit=PIN_C6, BAUD=9600)
 
-int reed;
-int freq;
-int freqAux;
-int latencia = 100;
+long reed;
+long reedAux;
+
+long freq;
+long freqAux;
+
+int latencia = 2;
 
 float aux;
 
@@ -28,22 +31,22 @@ int main(void) {
 	while (TRUE) {
 
 		set_adc_channel(0);
+		delay_ms(latencia);
 		freq = read_adc();
 
 		if (freq != freqAux) {
 			freqAux = freq;
-			aux = (59 * freq + 255) / 255;
-			latencia = (int) 1000 / aux;
+			printf("AN0: %f\n\r", (float) freq / 10.24);
 		}
-		while (!adc_done())
-			;
-		set_adc_channel(1);
+
+		set_adc_channel(3);
+		delay_ms(latencia);
 		reed = read_adc();
 
-		printf("%u\n\r", reed);
-		printf("%f\n\r", (float) reed / 255 * 5);
-
-		delay_ms(latencia);
+		if (reed != reedAux) {
+			reedAux = reed;
+			printf("AN3: %f\n\r", (float) reed / 10.24);
+		}
 	}
 	return 0;
 }

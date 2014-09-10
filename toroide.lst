@@ -1,15 +1,15 @@
-CCS PCH C Compiler, Version 4.140, 22098               09-set-14 11:28
+CCS PCH C Compiler, Version 4.140, 22098               10-set-14 09:03
 
                Filename:   D:\Projetos\Toroide\toroide.lst
 
-               ROM used:   1922 bytes (6%)
-                           Largest free fragment is 30846
-               RAM used:   16 (1%) at main() level
-                           42 (3%) worst case
+               ROM used:   1796 bytes (5%)
+                           Largest free fragment is 30972
+               RAM used:   21 (1%) at main() level
+                           47 (3%) worst case
                Stack:     2 locations
 
 *
-0000:  GOTO   0604
+0000:  GOTO   056A
 .................... /* 
 ....................  * toroide.c 
 ....................  * 
@@ -27,245 +27,260 @@ CCS PCH C Compiler, Version 4.140, 22098               09-set-14 11:28
 .................... #FUSES HS 
 ....................  
 .................... #USE delay(clock=16MHz) 
-05DA:  CLRF   FEA
-05DC:  MOVLW  0C
-05DE:  MOVWF  FE9
-05E0:  MOVF   FEF,W
-05E2:  BZ    0600
-05E4:  MOVLW  05
-05E6:  MOVWF  01
-05E8:  CLRF   00
-05EA:  DECFSZ 00,F
-05EC:  BRA    05EA
-05EE:  DECFSZ 01,F
-05F0:  BRA    05E8
-05F2:  MOVLW  2E
-05F4:  MOVWF  00
-05F6:  DECFSZ 00,F
-05F8:  BRA    05F6
-05FA:  BRA    05FC
-05FC:  DECFSZ FEF,F
-05FE:  BRA    05E4
-0600:  GOTO   077A (RETURN)
+*
+0018:  CLRF   FEA
+001A:  MOVLW  11
+001C:  MOVWF  FE9
+001E:  MOVF   FEF,W
+0020:  BZ    003E
+0022:  MOVLW  05
+0024:  MOVWF  01
+0026:  CLRF   00
+0028:  DECFSZ 00,F
+002A:  BRA    0028
+002C:  DECFSZ 01,F
+002E:  BRA    0026
+0030:  MOVLW  2E
+0032:  MOVWF  00
+0034:  DECFSZ 00,F
+0036:  BRA    0034
+0038:  BRA    003A
+003A:  DECFSZ FEF,F
+003C:  BRA    0022
+003E:  RETURN 0
 .................... #USE rs232(xmit=PIN_C6, BAUD=9600) 
 *
-01F6:  BCF    F94.6
-01F8:  BCF    F8B.6
-01FA:  MOVLW  08
-01FC:  MOVWF  01
-01FE:  BRA    0200
-0200:  NOP   
-0202:  BSF    01.7
-0204:  BRA    0222
-0206:  BCF    01.7
-0208:  RRCF   1D,F
-020A:  BTFSC  FD8.0
-020C:  BSF    F8B.6
-020E:  BTFSS  FD8.0
-0210:  BCF    F8B.6
-0212:  BSF    01.6
-0214:  BRA    0222
-0216:  BCF    01.6
-0218:  DECFSZ 01,F
-021A:  BRA    0208
-021C:  BRA    021E
-021E:  NOP   
-0220:  BSF    F8B.6
-0222:  MOVLW  84
-0224:  MOVWF  FE9
-0226:  DECFSZ FE9,F
-0228:  BRA    0226
-022A:  BRA    022C
-022C:  NOP   
-022E:  BTFSC  01.7
-0230:  BRA    0206
-0232:  BTFSC  01.6
-0234:  BRA    0216
-0236:  RETURN 0
+01D0:  BCF    F94.6
+01D2:  BCF    F8B.6
+01D4:  MOVLW  08
+01D6:  MOVWF  01
+01D8:  BRA    01DA
+01DA:  NOP   
+01DC:  BSF    01.7
+01DE:  BRA    01FC
+01E0:  BCF    01.7
+01E2:  RRCF   22,F
+01E4:  BTFSC  FD8.0
+01E6:  BSF    F8B.6
+01E8:  BTFSS  FD8.0
+01EA:  BCF    F8B.6
+01EC:  BSF    01.6
+01EE:  BRA    01FC
+01F0:  BCF    01.6
+01F2:  DECFSZ 01,F
+01F4:  BRA    01E2
+01F6:  BRA    01F8
+01F8:  NOP   
+01FA:  BSF    F8B.6
+01FC:  MOVLW  84
+01FE:  MOVWF  FE9
+0200:  DECFSZ FE9,F
+0202:  BRA    0200
+0204:  BRA    0206
+0206:  NOP   
+0208:  BTFSC  01.7
+020A:  BRA    01E0
+020C:  BTFSC  01.6
+020E:  BRA    01F0
+0210:  RETURN 0
 ....................  
-.................... int reed; 
-.................... int freq; 
-.................... int freqAux; 
-.................... int latencia = 100; 
+.................... long reed; 
+.................... long reedAux; 
+....................  
+.................... long freq; 
+.................... long freqAux; 
+....................  
+.................... int latencia = 2; 
 ....................  
 .................... float aux; 
 ....................  
 .................... int main(void) { 
 *
-0604:  CLRF   FF8
-0606:  BCF    FD0.7
-0608:  CLRF   FEA
-060A:  CLRF   FE9
-060C:  BCF    F94.6
-060E:  BSF    F8B.6
-0610:  MOVLW  64
-0612:  MOVWF  07
-0614:  BSF    FC1.0
-0616:  BSF    FC1.1
-0618:  BSF    FC1.2
-061A:  BCF    FC1.3
+056A:  CLRF   FF8
+056C:  BCF    FD0.7
+056E:  CLRF   FEA
+0570:  CLRF   FE9
+0572:  BCF    F94.6
+0574:  BSF    F8B.6
+0576:  MOVLW  02
+0578:  MOVWF  0C
+057A:  BSF    FC1.0
+057C:  BSF    FC1.1
+057E:  BSF    FC1.2
+0580:  BCF    FC1.3
 ....................  
 .................... 	SETUP_ADC(ADC_CLOCK_INTERNAL); 
-061C:  BCF    FC1.6
-061E:  BSF    FC2.6
-0620:  BSF    FC2.7
-0622:  BSF    FC1.7
-0624:  BSF    FC2.0
+0582:  BCF    FC1.6
+0584:  BSF    FC2.6
+0586:  BSF    FC2.7
+0588:  BSF    FC1.7
+058A:  BSF    FC2.0
 .................... 	SETUP_ADC_PORTS(AN0_AN1_AN3); 
-0626:  BCF    FC1.0
-0628:  BCF    FC1.1
-062A:  BSF    FC1.2
-062C:  BCF    FC1.3
+058C:  BCF    FC1.0
+058E:  BCF    FC1.1
+0590:  BSF    FC1.2
+0592:  BCF    FC1.3
 ....................  
 .................... 	while (TRUE) { 
 ....................  
 .................... 		set_adc_channel(0); 
-062E:  MOVLW  00
-0630:  MOVWF  01
-0632:  MOVF   FC2,W
-0634:  ANDLW  C7
-0636:  IORWF  01,W
-0638:  MOVWF  FC2
+0594:  MOVLW  00
+0596:  MOVWF  01
+0598:  MOVF   FC2,W
+059A:  ANDLW  C7
+059C:  IORWF  01,W
+059E:  MOVWF  FC2
+.................... 		delay_ms(latencia); 
+05A0:  MOVFF  0C,11
+05A4:  RCALL  0018
 .................... 		freq = read_adc(); 
-063A:  BSF    FC2.2
-063C:  BTFSC  FC2.2
-063E:  BRA    063C
-0640:  MOVFF  FC3,05
+05A6:  BSF    FC2.2
+05A8:  BTFSC  FC2.2
+05AA:  BRA    05A8
+05AC:  MOVFF  FC3,08
+05B0:  MOVFF  FC4,09
 ....................  
 .................... 		if (freq != freqAux) { 
-0644:  MOVF   06,W
-0646:  SUBWF  05,W
-0648:  BZ    06AA
+05B4:  MOVF   0A,W
+05B6:  SUBWF  08,W
+05B8:  BNZ   05C0
+05BA:  MOVF   0B,W
+05BC:  SUBWF  09,W
+05BE:  BZ    0648
 .................... 			freqAux = freq; 
-064A:  MOVFF  05,06
-.................... 			aux = (59 * freq + 255) / 255; 
-064E:  MOVF   05,W
-0650:  MULLW  3B
-0652:  MOVF   FF3,W
-0654:  ADDLW  FF
-0656:  MOVWF  0D
-0658:  MOVWF  0E
-065A:  SETF   0F
-065C:  RCALL  0004
-065E:  MOVF   01,W
-0660:  CLRF   0D
-0662:  MOVWF  0C
-0664:  RCALL  002C
-0666:  MOVFF  03,0B
-066A:  MOVFF  02,0A
-066E:  MOVFF  01,09
-0672:  MOVFF  00,08
-.................... 			latencia = (int) 1000 / aux; 
-0676:  CLRF   13
-0678:  CLRF   12
-067A:  MOVLW  68
-067C:  MOVWF  11
-067E:  MOVLW  86
-0680:  MOVWF  10
-0682:  MOVFF  0B,17
-0686:  MOVFF  0A,16
-068A:  MOVFF  09,15
-068E:  MOVFF  08,14
-0692:  RCALL  0062
-0694:  MOVFF  03,0F
-0698:  MOVFF  02,0E
-069C:  MOVFF  01,0D
-06A0:  MOVFF  00,0C
-06A4:  BRA    01BC
-06A6:  MOVFF  01,07
+05C0:  MOVFF  09,0B
+05C4:  MOVFF  08,0A
+.................... 			printf("AN0: %f\n\r", (float) freq / 10.24); 
+05C8:  MOVFF  09,12
+05CC:  MOVFF  08,11
+05D0:  RCALL  0040
+05D2:  MOVFF  00,11
+05D6:  MOVFF  01,12
+05DA:  MOVFF  02,13
+05DE:  MOVFF  03,14
+05E2:  MOVFF  03,18
+05E6:  MOVFF  02,17
+05EA:  MOVFF  01,16
+05EE:  MOVFF  00,15
+05F2:  MOVLW  0A
+05F4:  MOVWF  1C
+05F6:  MOVLW  D7
+05F8:  MOVWF  1B
+05FA:  MOVLW  23
+05FC:  MOVWF  1A
+05FE:  MOVLW  82
+0600:  MOVWF  19
+0602:  RCALL  0076
+0604:  MOVFF  00,11
+0608:  MOVFF  01,12
+060C:  MOVFF  02,13
+0610:  MOVFF  03,14
+0614:  MOVLW  04
+0616:  MOVWF  FF6
+0618:  MOVLW  00
+061A:  MOVWF  FF7
+061C:  MOVLW  05
+061E:  MOVWF  15
+0620:  RCALL  0212
+0622:  MOVLW  89
+0624:  MOVWF  FE9
+0626:  MOVFF  14,18
+062A:  MOVFF  13,17
+062E:  MOVFF  12,16
+0632:  MOVFF  11,15
+0636:  MOVLW  02
+0638:  MOVWF  19
+063A:  RCALL  03F2
+063C:  MOVLW  0A
+063E:  MOVWF  22
+0640:  RCALL  01D0
+0642:  MOVLW  0D
+0644:  MOVWF  22
+0646:  RCALL  01D0
 .................... 		} 
-.................... 		while (!adc_done()) 
-.................... 			; 
-06AA:  BTFSC  FC2.2
-06AC:  BRA    06AA
-.................... 		set_adc_channel(1); 
-06AE:  MOVLW  08
-06B0:  MOVWF  01
-06B2:  MOVF   FC2,W
-06B4:  ANDLW  C7
-06B6:  IORWF  01,W
-06B8:  MOVWF  FC2
-.................... 		reed = read_adc(); 
-06BA:  BSF    FC2.2
-06BC:  BTFSC  FC2.2
-06BE:  BRA    06BC
-06C0:  MOVFF  FC3,04
 ....................  
-.................... 		printf("%u\n\r", reed); 
-06C4:  MOVFF  04,0C
-06C8:  MOVLW  1B
-06CA:  MOVWF  0D
-06CC:  BRA    0238
-06CE:  MOVLW  0A
-06D0:  MOVWF  1D
-06D2:  RCALL  01F6
-06D4:  MOVLW  0D
-06D6:  MOVWF  1D
-06D8:  RCALL  01F6
-.................... 		printf("%f\n\r", (float) reed / 255 * 5); 
-06DA:  CLRF   0D
-06DC:  MOVFF  04,0C
-06E0:  RCALL  002C
-06E2:  MOVFF  00,0C
-06E6:  MOVFF  01,0D
-06EA:  MOVFF  02,0E
-06EE:  MOVFF  03,0F
-06F2:  MOVFF  03,13
-06F6:  MOVFF  02,12
-06FA:  MOVFF  01,11
-06FE:  MOVFF  00,10
-0702:  CLRF   17
-0704:  CLRF   16
-0706:  MOVLW  7F
-0708:  MOVWF  15
-070A:  MOVLW  86
-070C:  MOVWF  14
-070E:  RCALL  0062
-0710:  MOVFF  00,0C
-0714:  MOVFF  01,0D
-0718:  MOVFF  02,0E
-071C:  MOVFF  03,0F
-0720:  MOVFF  03,20
-0724:  MOVFF  02,1F
-0728:  MOVFF  01,1E
-072C:  MOVFF  00,1D
-0730:  CLRF   24
-0732:  CLRF   23
-0734:  MOVLW  20
-0736:  MOVWF  22
-0738:  MOVLW  81
-073A:  MOVWF  21
-073C:  RCALL  02A0
-073E:  MOVFF  00,0C
-0742:  MOVFF  01,0D
-0746:  MOVFF  02,0E
-074A:  MOVFF  03,0F
-074E:  MOVLW  89
-0750:  MOVWF  FE9
-0752:  MOVFF  03,13
-0756:  MOVFF  02,12
-075A:  MOVFF  01,11
-075E:  MOVFF  00,10
-0762:  MOVLW  02
-0764:  MOVWF  14
-0766:  BRA    0460
-0768:  MOVLW  0A
-076A:  MOVWF  1D
-076C:  RCALL  01F6
-076E:  MOVLW  0D
-0770:  MOVWF  1D
-0772:  RCALL  01F6
-....................  
+.................... 		set_adc_channel(3); 
+0648:  MOVLW  18
+064A:  MOVWF  01
+064C:  MOVF   FC2,W
+064E:  ANDLW  C7
+0650:  IORWF  01,W
+0652:  MOVWF  FC2
 .................... 		delay_ms(latencia); 
-0774:  MOVFF  07,0C
-0778:  BRA    05DA
+0654:  MOVFF  0C,11
+0658:  RCALL  0018
+.................... 		reed = read_adc(); 
+065A:  BSF    FC2.2
+065C:  BTFSC  FC2.2
+065E:  BRA    065C
+0660:  MOVFF  FC3,04
+0664:  MOVFF  FC4,05
+....................  
+.................... 		if (reed != reedAux) { 
+0668:  MOVF   06,W
+066A:  SUBWF  04,W
+066C:  BNZ   0674
+066E:  MOVF   07,W
+0670:  SUBWF  05,W
+0672:  BZ    06FC
+.................... 			reedAux = reed; 
+0674:  MOVFF  05,07
+0678:  MOVFF  04,06
+.................... 			printf("AN3: %f\n\r", (float) reed / 10.24); 
+067C:  MOVFF  05,12
+0680:  MOVFF  04,11
+0684:  RCALL  0040
+0686:  MOVFF  00,11
+068A:  MOVFF  01,12
+068E:  MOVFF  02,13
+0692:  MOVFF  03,14
+0696:  MOVFF  03,18
+069A:  MOVFF  02,17
+069E:  MOVFF  01,16
+06A2:  MOVFF  00,15
+06A6:  MOVLW  0A
+06A8:  MOVWF  1C
+06AA:  MOVLW  D7
+06AC:  MOVWF  1B
+06AE:  MOVLW  23
+06B0:  MOVWF  1A
+06B2:  MOVLW  82
+06B4:  MOVWF  19
+06B6:  RCALL  0076
+06B8:  MOVFF  00,11
+06BC:  MOVFF  01,12
+06C0:  MOVFF  02,13
+06C4:  MOVFF  03,14
+06C8:  MOVLW  0E
+06CA:  MOVWF  FF6
+06CC:  MOVLW  00
+06CE:  MOVWF  FF7
+06D0:  MOVLW  05
+06D2:  MOVWF  15
+06D4:  RCALL  0212
+06D6:  MOVLW  89
+06D8:  MOVWF  FE9
+06DA:  MOVFF  14,18
+06DE:  MOVFF  13,17
+06E2:  MOVFF  12,16
+06E6:  MOVFF  11,15
+06EA:  MOVLW  02
+06EC:  MOVWF  19
+06EE:  RCALL  03F2
+06F0:  MOVLW  0A
+06F2:  MOVWF  22
+06F4:  RCALL  01D0
+06F6:  MOVLW  0D
+06F8:  MOVWF  22
+06FA:  RCALL  01D0
+.................... 		} 
 .................... 	} 
-077A:  BRA    062E
+06FC:  BRA    0594
 .................... 	return 0; 
-077C:  MOVLW  00
-077E:  MOVWF  01
+06FE:  MOVLW  00
+0700:  MOVWF  01
 .................... } 
-0780:  SLEEP 
+0702:  SLEEP 
 
 Configuration Fuses:
    Word  1: 2200   HS NOOSCSEN
