@@ -1,61 +1,15 @@
-CCS PCH C Compiler, Version 4.140, 22098               10-set-14 16:36
+CCS PCH C Compiler, Version 4.140, 22098               12-set-14 09:34
 
                Filename:   D:\Projetos\Toroide\toroide.lst
 
-               ROM used:   790 bytes (2%)
-                           Largest free fragment is 31974
-               RAM used:   1230 (80%) at main() level
-                           1242 (81%) worst case
-               Stack:     3 worst case (2 in main + 1 for interrupts)
+               ROM used:   588 bytes (2%)
+                           Largest free fragment is 32180
+               RAM used:   1509 (98%) at main() level
+                           1519 (99%) worst case
+               Stack:     2 locations
 
 *
-0000:  GOTO   0236
-*
-0008:  MOVWF  04
-000A:  MOVFF  FD8,05
-000E:  MOVFF  FE0,06
-0012:  MOVLB  0
-0014:  MOVFF  FE9,0C
-0018:  MOVFF  FEA,07
-001C:  MOVFF  FE1,08
-0020:  MOVFF  FE2,09
-0024:  MOVFF  FD9,0A
-0028:  MOVFF  FDA,0B
-002C:  MOVFF  FF3,12
-0030:  MOVFF  FF4,13
-0034:  MOVFF  FFA,14
-0038:  MOVFF  FF5,15
-003C:  MOVFF  FF6,16
-0040:  MOVFF  FF7,17
-0044:  MOVFF  00,0E
-0048:  MOVFF  01,0F
-004C:  MOVFF  02,10
-0050:  MOVFF  03,11
-0054:  BTFSS  FF2.5
-0056:  GOTO   0060
-005A:  BTFSC  FF2.2
-005C:  GOTO   00AE
-0060:  MOVFF  0E,00
-0064:  MOVFF  0F,01
-0068:  MOVFF  10,02
-006C:  MOVFF  11,03
-0070:  MOVFF  0C,FE9
-0074:  MOVFF  07,FEA
-0078:  BSF    07.7
-007A:  MOVFF  08,FE1
-007E:  MOVFF  09,FE2
-0082:  MOVFF  0A,FD9
-0086:  MOVFF  0B,FDA
-008A:  MOVFF  12,FF3
-008E:  MOVFF  13,FF4
-0092:  MOVFF  14,FFA
-0096:  MOVFF  15,FF5
-009A:  MOVFF  16,FF6
-009E:  MOVFF  17,FF7
-00A2:  MOVF   04,W
-00A4:  MOVFF  06,FE0
-00A8:  MOVFF  05,FD8
-00AC:  RETFIE 0
+0000:  GOTO   0134
 .................... /* 
 ....................  * toroide.c 
 ....................  * 
@@ -74,268 +28,232 @@ CCS PCH C Compiler, Version 4.140, 22098               10-set-14 16:36
 ....................  
 .................... #USE delay(clock=16MHz) 
 *
-0106:  MOVLW  04
-0108:  MOVWF  FEA
-010A:  MOVLW  CC
-010C:  MOVWF  FE9
-010E:  MOVF   FEF,W
-0110:  BZ    012E
-0112:  MOVLW  05
-0114:  MOVWF  01
-0116:  CLRF   00
-0118:  DECFSZ 00,F
-011A:  BRA    0118
-011C:  DECFSZ 01,F
-011E:  BRA    0116
-0120:  MOVLW  2E
-0122:  MOVWF  00
-0124:  DECFSZ 00,F
-0126:  BRA    0124
-0128:  BRA    012A
-012A:  DECFSZ FEF,F
-012C:  BRA    0112
-012E:  GOTO   0284 (RETURN)
+0004:  MOVLW  05
+0006:  MOVWF  FEA
+0008:  MOVLW  E3
+000A:  MOVWF  FE9
+000C:  MOVF   FEF,W
+000E:  BZ    002C
+0010:  MOVLW  05
+0012:  MOVWF  01
+0014:  CLRF   00
+0016:  DECFSZ 00,F
+0018:  BRA    0016
+001A:  DECFSZ 01,F
+001C:  BRA    0014
+001E:  MOVLW  2E
+0020:  MOVWF  00
+0022:  DECFSZ 00,F
+0024:  BRA    0022
+0026:  BRA    0028
+0028:  DECFSZ FEF,F
+002A:  BRA    0010
+002C:  GOTO   0176 (RETURN)
 .................... #USE rs232(xmit=PIN_C6, BAUD=9600) 
-0132:  BCF    F94.6
-0134:  BCF    F8B.6
-0136:  MOVLW  08
-0138:  MOVWF  01
-013A:  BRA    013C
-013C:  NOP   
-013E:  BSF    01.7
-0140:  BRA    0162
-0142:  BCF    01.7
-0144:  MOVLB  4
-0146:  RRCF   xD7,F
-0148:  MOVLB  0
-014A:  BTFSC  FD8.0
-014C:  BSF    F8B.6
-014E:  BTFSS  FD8.0
-0150:  BCF    F8B.6
-0152:  BSF    01.6
-0154:  BRA    0162
-0156:  BCF    01.6
-0158:  DECFSZ 01,F
-015A:  BRA    0144
-015C:  BRA    015E
-015E:  NOP   
-0160:  BSF    F8B.6
-0162:  MOVLW  84
-0164:  MOVWF  FE9
-0166:  DECFSZ FE9,F
-0168:  BRA    0166
-016A:  BRA    016C
-016C:  NOP   
-016E:  BTFSC  01.7
-0170:  BRA    0142
-0172:  BTFSC  01.6
-0174:  BRA    0156
-0176:  RETURN 0
+0030:  BCF    F94.6
+0032:  BCF    F8B.6
+0034:  MOVLW  08
+0036:  MOVWF  01
+0038:  BRA    003A
+003A:  NOP   
+003C:  BSF    01.7
+003E:  BRA    0060
+0040:  BCF    01.7
+0042:  MOVLB  5
+0044:  RRCF   xEE,F
+0046:  MOVLB  0
+0048:  BTFSC  FD8.0
+004A:  BSF    F8B.6
+004C:  BTFSS  FD8.0
+004E:  BCF    F8B.6
+0050:  BSF    01.6
+0052:  BRA    0060
+0054:  BCF    01.6
+0056:  DECFSZ 01,F
+0058:  BRA    0042
+005A:  BRA    005C
+005C:  NOP   
+005E:  BSF    F8B.6
+0060:  MOVLW  84
+0062:  MOVWF  FE9
+0064:  DECFSZ FE9,F
+0066:  BRA    0064
+0068:  BRA    006A
+006A:  NOP   
+006C:  BTFSC  01.7
+006E:  BRA    0040
+0070:  BTFSC  01.6
+0072:  BRA    0054
+0074:  RETURN 0
 ....................  
 .................... #define botStart	PIN_B0 
-.................... #define tmr0reg		0 
-.................... #define bufferSize	600 
+.................... #define bufferSize	750 
 ....................  
 .................... short ctrl; 
 ....................  
 .................... long vetor[bufferSize]; 
 .................... long cont; 
-....................  
-.................... #INT_TIMER0 
-.................... void isr_timer0() { 
-.................... 	clear_interrupt(INT_TIMER0); 
-*
-00AE:  BCF    FF2.2
-.................... 	set_timer0(tmr0reg); 
-00B0:  CLRF   FD7
-00B2:  CLRF   FD6
-.................... 	vetor[cont++] = read_adc(); 
-00B4:  MOVLB  4
-00B6:  MOVFF  4CB,03
-00BA:  MOVF   xCA,W
-00BC:  INCF   xCA,F
-00BE:  BTFSC  FD8.2
-00C0:  INCF   xCB,F
-00C2:  MOVWF  xD8
-00C4:  MOVFF  03,4D9
-00C8:  BCF    FD8.0
-00CA:  RLCF   xD8,W
-00CC:  MOVWF  02
-00CE:  RLCF   03,W
-00D0:  MOVWF  03
-00D2:  MOVF   02,W
-00D4:  ADDLW  1A
-00D6:  MOVWF  FE9
-00D8:  MOVLW  00
-00DA:  ADDWFC 03,W
-00DC:  MOVWF  FEA
-00DE:  BSF    FC2.2
-00E0:  BTFSC  FC2.2
-00E2:  BRA    00E0
-00E4:  MOVFF  FC3,FEF
-00E8:  MOVFF  FC4,FEC
-.................... 	if (cont >= bufferSize) 
-00EC:  MOVF   xCB,W
-00EE:  SUBLW  01
-00F0:  BC    00FE
-00F2:  XORLW  FF
-00F4:  BNZ   00FC
-00F6:  MOVF   xCA,W
-00F8:  SUBLW  57
-00FA:  BC    00FE
-.................... 		disable_interrupts(INT_TIMER0); 
-00FC:  BCF    FF2.5
-.................... } 
-....................  
-00FE:  BCF    FF2.2
-0100:  MOVLB  0
-0102:  GOTO   0060
 .................... int main(void) { 
 *
-0236:  CLRF   FF8
-0238:  BCF    FD0.7
-023A:  BSF    07.7
-023C:  CLRF   FEA
-023E:  CLRF   FE9
-0240:  BCF    F94.6
-0242:  BSF    F8B.6
-0244:  BSF    FC1.0
-0246:  BSF    FC1.1
-0248:  BSF    FC1.2
-024A:  BCF    FC1.3
+0134:  CLRF   FF8
+0136:  BCF    FD0.7
+0138:  CLRF   FEA
+013A:  CLRF   FE9
+013C:  BCF    F94.6
+013E:  BSF    F8B.6
+0140:  BSF    FC1.0
+0142:  BSF    FC1.1
+0144:  BSF    FC1.2
+0146:  BCF    FC1.3
 ....................  
 .................... 	SETUP_ADC(ADC_CLOCK_INTERNAL); 
-024C:  BCF    FC1.6
-024E:  BSF    FC2.6
-0250:  BSF    FC2.7
-0252:  BSF    FC1.7
-0254:  BSF    FC2.0
+0148:  BCF    FC1.6
+014A:  BSF    FC2.6
+014C:  BSF    FC2.7
+014E:  BSF    FC1.7
+0150:  BSF    FC2.0
 .................... 	SETUP_ADC_PORTS(AN0); 
-0256:  BCF    FC1.0
-0258:  BSF    FC1.1
-025A:  BSF    FC1.2
-025C:  BSF    FC1.3
+0152:  BCF    FC1.0
+0154:  BSF    FC1.1
+0156:  BSF    FC1.2
+0158:  BSF    FC1.3
 .................... 	set_adc_channel(0); 
-025E:  MOVLW  00
-0260:  MOVWF  01
-0262:  MOVF   FC2,W
-0264:  ANDLW  C7
-0266:  IORWF  01,W
-0268:  MOVWF  FC2
-....................  
-.................... 	set_timer0(tmr0reg); 
-026A:  CLRF   FD7
-026C:  CLRF   FD6
-.................... 	setup_timer_0(T0_INTERNAL | T0_8_BIT); 
-026E:  MOVLW  C0
-0270:  MOVWF  FD5
-....................  
-.................... 	clear_interrupt(INT_TIMER0); 
-0272:  BCF    FF2.2
-.................... //	enable_interrupts(INT_TIMER0); 
-.................... //	enable_interrupts(GLOBAL); 
+015A:  MOVLW  00
+015C:  MOVWF  01
+015E:  MOVF   FC2,W
+0160:  ANDLW  C7
+0162:  IORWF  01,W
+0164:  MOVWF  FC2
 ....................  
 .................... 	while (TRUE) { 
 ....................  
 .................... 		if (!input(botStart)) { 
-0274:  BSF    F93.0
-0276:  BTFSC  F81.0
-0278:  BRA    0296
+0166:  BSF    F93.0
+0168:  BTFSC  F81.0
+016A:  BRA    0240
 .................... 			delay_ms(100); 
-027A:  MOVLW  64
-027C:  MOVLB  4
-027E:  MOVWF  xCC
-0280:  MOVLB  0
-0282:  BRA    0106
+016C:  MOVLW  64
+016E:  MOVLB  5
+0170:  MOVWF  xE3
+0172:  MOVLB  0
+0174:  BRA    0004
 .................... 			if (!input(botStart) && !ctrl) { 
-0284:  BSF    F93.0
-0286:  BTFSC  F81.0
-0288:  BRA    0296
-028A:  BTFSC  19.0
-028C:  BRA    0296
+0176:  BSF    F93.0
+0178:  BTFSC  F81.0
+017A:  BRA    023A
+017C:  BTFSC  04.0
+017E:  BRA    023A
 .................... 				ctrl = TRUE; 
-028E:  BSF    19.0
-.................... 				enable_interrupts(INT_TIMER0); 
-0290:  BSF    FF2.5
-.................... 				enable_interrupts(GLOBAL); 
-0292:  MOVLW  C0
-0294:  IORWF  FF2,F
-.................... 			} 
+0180:  BSF    04.0
+.................... 				cont = 0; 
+0182:  MOVLB  5
+0184:  CLRF   xE2
+0186:  CLRF   xE1
+.................... 				while (cont < bufferSize) { 
+0188:  MOVF   xE2,W
+018A:  SUBLW  02
+018C:  BNC   01D2
+018E:  BNZ   0196
+0190:  MOVF   xE1,W
+0192:  SUBLW  ED
+0194:  BNC   01D2
+.................... 					vetor[cont++] = read_adc(); 
+0196:  MOVFF  5E2,03
+019A:  MOVF   xE1,W
+019C:  INCF   xE1,F
+019E:  BTFSC  FD8.2
+01A0:  INCF   xE2,F
+01A2:  MOVWF  xE3
+01A4:  MOVFF  03,5E4
+01A8:  BCF    FD8.0
+01AA:  RLCF   xE3,W
+01AC:  MOVWF  02
+01AE:  RLCF   03,W
+01B0:  MOVWF  03
+01B2:  MOVF   02,W
+01B4:  ADDLW  05
+01B6:  MOVWF  FE9
+01B8:  MOVLW  00
+01BA:  ADDWFC 03,W
+01BC:  MOVWF  FEA
+01BE:  BSF    FC2.2
+01C0:  BTFSC  FC2.2
+01C2:  BRA    01C0
+01C4:  MOVFF  FC3,FEF
+01C8:  MOVFF  FC4,FEC
+.................... 					while (!adc_done()) 
+.................... 						; 
+01CC:  BTFSC  FC2.2
+01CE:  BRA    01CC
+.................... 				} 
+01D0:  BRA    0188
+.................... 				for (cont = 0; cont < bufferSize; ++cont) { 
+01D2:  CLRF   xE2
+01D4:  CLRF   xE1
+01D6:  MOVF   xE2,W
+01D8:  SUBLW  02
+01DA:  BNC   0232
+01DC:  BNZ   01E4
+01DE:  MOVF   xE1,W
+01E0:  SUBLW  ED
+01E2:  BNC   0232
+.................... 					printf("%lu\n\r", vetor[cont]); 
+01E4:  BCF    FD8.0
+01E6:  RLCF   xE1,W
+01E8:  MOVWF  02
+01EA:  RLCF   xE2,W
+01EC:  MOVWF  03
+01EE:  MOVF   02,W
+01F0:  ADDLW  05
+01F2:  MOVWF  FE9
+01F4:  MOVLW  00
+01F6:  ADDWFC 03,W
+01F8:  MOVWF  FEA
+01FA:  MOVFF  FEC,5E4
+01FE:  MOVF   FED,F
+0200:  MOVFF  FEF,5E3
+0204:  MOVLW  10
+0206:  MOVWF  FE9
+0208:  MOVFF  5E4,5E6
+020C:  MOVFF  5E3,5E5
+0210:  MOVLB  0
+0212:  BRA    0076
+0214:  MOVLW  0A
+0216:  MOVLB  5
+0218:  MOVWF  xEE
+021A:  MOVLB  0
+021C:  RCALL  0030
+021E:  MOVLW  0D
+0220:  MOVLB  5
+0222:  MOVWF  xEE
+0224:  MOVLB  0
+0226:  RCALL  0030
+.................... 				} 
+0228:  MOVLB  5
+022A:  INCF   xE1,F
+022C:  BTFSC  FD8.2
+022E:  INCF   xE2,F
+0230:  BRA    01D6
+.................... 				cont = 0; 
+0232:  CLRF   xE2
+0234:  CLRF   xE1
+.................... 			} else if (ctrl) 
+0236:  BRA    0242
+0238:  MOVLB  0
+023A:  BTFSS  04.0
+023C:  BRA    0240
+.................... 				ctrl = FALSE; 
+023E:  BCF    04.0
+0240:  MOVLB  5
 .................... 		} 
-....................  
-.................... 		if (cont >= bufferSize) { 
-0296:  MOVLB  4
-0298:  MOVF   xCB,W
-029A:  SUBLW  01
-029C:  BC    030E
-029E:  XORLW  FF
-02A0:  BNZ   02A8
-02A2:  MOVF   xCA,W
-02A4:  SUBLW  57
-02A6:  BC    030E
-.................... //			delay_ms(1000); 
-.................... 			for (cont = 0; cont < bufferSize; ++cont) { 
-02A8:  CLRF   xCB
-02AA:  CLRF   xCA
-02AC:  MOVF   xCB,W
-02AE:  SUBLW  02
-02B0:  BNC   0308
-02B2:  BNZ   02BA
-02B4:  MOVF   xCA,W
-02B6:  SUBLW  57
-02B8:  BNC   0308
-.................... 				printf("%lu\n\r", vetor[cont]); 
-02BA:  BCF    FD8.0
-02BC:  RLCF   xCA,W
-02BE:  MOVWF  02
-02C0:  RLCF   xCB,W
-02C2:  MOVWF  03
-02C4:  MOVF   02,W
-02C6:  ADDLW  1A
-02C8:  MOVWF  FE9
-02CA:  MOVLW  00
-02CC:  ADDWFC 03,W
-02CE:  MOVWF  FEA
-02D0:  MOVFF  FEC,4CD
-02D4:  MOVF   FED,F
-02D6:  MOVFF  FEF,4CC
-02DA:  MOVLW  10
-02DC:  MOVWF  FE9
-02DE:  MOVFF  4CD,4CF
-02E2:  MOVFF  4CC,4CE
-02E6:  MOVLB  0
-02E8:  BRA    0178
-02EA:  MOVLW  0A
-02EC:  MOVLB  4
-02EE:  MOVWF  xD7
-02F0:  MOVLB  0
-02F2:  RCALL  0132
-02F4:  MOVLW  0D
-02F6:  MOVLB  4
-02F8:  MOVWF  xD7
-02FA:  MOVLB  0
-02FC:  RCALL  0132
-.................... 			} 
-02FE:  MOVLB  4
-0300:  INCF   xCA,F
-0302:  BTFSC  FD8.2
-0304:  INCF   xCB,F
-0306:  BRA    02AC
-.................... 			return 0; 
-0308:  MOVLW  00
-030A:  MOVWF  01
-030C:  BRA    0318
-.................... 		} 
-....................  
 .................... 	} 
-030E:  MOVLB  0
-0310:  BRA    0274
+0242:  MOVLB  0
+0244:  BRA    0166
 .................... 	return 0; 
-0312:  MOVLW  00
-0314:  MOVWF  01
-0316:  MOVLB  4
+0246:  MOVLW  00
+0248:  MOVWF  01
 .................... } 
-0318:  SLEEP 
+024A:  SLEEP 
 
 Configuration Fuses:
    Word  1: 2200   HS NOOSCSEN
